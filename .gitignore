@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+data/pricing.db-journal
+
+# local-only material
+Competitive Pricing Intelligence (Self-Scraped)*.docx
+Competitive Pricing Intelligence (Self-Scraped)*.pdf
+dataset link.txt
+dataset/amazon.csv
+.p*.png

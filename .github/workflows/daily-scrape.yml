@@ -1,0 +1,66 @@
+name: daily-scrape
+
+on:
+  workflow_dispatch: {}
+
+concurrency:
+  group: daily-scrape
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Scrape
+        id: scrape
+        continue-on-error: true      # still export + commit the scrape_log so failures are visible
+        env:
+          SCRAPER_CONTACT: ${{ secrets.SCRAPER_CONTACT }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}      # optional; empty => committed SQLite file
+        run: python -m scraper.run_scrape
+      - name: Export dashboard data
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python -m pricing.export --csv-snapshot data/price_snapshots.csv
+      - name: Commit data
+        run: |
+          git config user.name  "pricing-bot"
+          git config user.email "pricing-bot@users.noreply.github.com"
+          git add -f data/pricing.db data/price_snapshots.csv site/data/dashboard.json || true
+          git diff --cached --quiet || git commit -m "data: daily scrape $(date -u +%F)"
+          git push
+      - name: Fail the run if the scrape failed
+        if: steps.scrape.outcome == 'failure'
+        run: echo "Scrape step failed - see scrape_log / step output" && exit 1
+
+  deploy:
+    needs: collect
+    if: ${{ always() && needs.collect.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}      # pick up the data commit made above
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,188 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live Pipeline | Earbuds Price Watch</title>
+<meta name="description" content="A daily price-tracking pipeline for earbuds on Flipkart and Amazon.in, analysing discount frequency, demand response and cross-platform price positioning.">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#overview"><span class="logo" aria-hidden="true">₹</span> Price Watch</a>
+    <nav aria-label="Sections" id="nav">
+      <a href="index.html">&larr; Analysis</a>
+      <a href="#overview">Overview</a>
+      <a href="#tracker">Prices &amp; discounts</a>
+      <a href="#elasticity">Demand response</a>
+      <a href="#positioning">Positioning</a>
+      <a href="#method">Methodology</a>
+    </nav>
+    <button id="theme" class="ghost" type="button" aria-label="Toggle dark mode">◐</button>
+  </div>
+</header>
+
+<div id="synthetic-banner" class="banner" hidden role="status">
+  <strong>Illustrative data.</strong> The figures shown are synthetically generated to demonstrate the dashboard and do not represent real market data.
+  Live results will replace them once at least four weeks of daily collection are complete.
+  <a href="https://github.com/anshikapatwari/competitive-pricing-intelligence" id="leave-demo">View the project repository</a>
+</div>
+
+<div class="wrap filters" id="filters" hidden>
+  <label>Platform <select id="f-platform"><option value="">All</option></select></label>
+  <label>Brand <select id="f-brand"><option value="">All</option></select></label>
+  <label>From <input type="date" id="f-from"></label>
+  <label>To <input type="date" id="f-to"></label>
+  <button class="ghost" id="f-reset" type="button">Reset</button>
+</div>
+
+<main id="main" class="wrap" tabindex="-1">
+  <p id="loading" class="muted">Loading data…</p>
+  <p id="load-error" class="notice" hidden></p>
+
+  <section id="overview" class="view" hidden>
+    <div class="hero">
+      <svg class="earbuds" viewBox="0 0 150 110" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-linecap="round">
+          <g transform="rotate(-14 40 50)"><rect x="30" y="52" width="14" height="48" rx="7" fill="#ffffff"/><circle cx="37" cy="40" r="26" fill="#ff9900"/><circle cx="37" cy="40" r="11" fill="#131921"/></g>
+          <g transform="rotate(14 110 50)"><rect x="106" y="52" width="14" height="48" rx="7" fill="#ffffff"/><circle cx="113" cy="40" r="26" fill="#2874f0"/><circle cx="113" cy="40" r="11" fill="#131921"/></g>
+        </g>
+      </svg>
+      <p class="eyebrow">80 products &middot; Flipkart and Amazon.in &middot; Daily collection</p>
+      <h1>Do deeper discounts increase demand for earbuds, or only reduce margin?</h1>
+      <p class="lede">This project tracks 80 earbuds across Flipkart and Amazon.in on a daily basis, recording price, MRP, rating and review count for each listing. A before-and-after event study is applied to every discount change to estimate whether the reduction was followed by a measurable increase in demand.</p>
+    </div>
+    <div id="empty-state" class="notice" hidden></div>
+    <div class="cards" id="cards"></div>
+    <h2>Key findings</h2>
+    <ul id="findings" class="findings"></ul>
+    <p class="muted small">Findings are generated from the loaded data and appear only when the sample is large enough to support them. Review velocity is a proxy for demand rather than a measure of sales. Please refer to the <a href="#method">Methodology</a> section for the full set of limitations.</p>
+  </section>
+
+  <section id="tracker" class="view" hidden>
+    <h2>Price and discount tracker</h2>
+    <div class="grid2">
+      <figure class="panel wide">
+        <figcaption><span class="t">Selling price over time</span>
+          <label class="inline">Product <select id="product-select"></select></label></figcaption>
+        <div class="chart"><canvas id="c-price" role="img" aria-label="Selling price and MRP over time for the selected product"></canvas></div>
+        <p class="muted small" id="price-note"></p>
+      </figure>
+      <figure class="panel">
+        <figcaption><span class="t">Average discount by platform</span></figcaption>
+        <div class="chart"><canvas id="c-platform" role="img" aria-label="Average discount percent per platform per day"></canvas></div>
+      </figure>
+      <figure class="panel">
+        <figcaption><span class="t">Deeper discounts by day of week</span></figcaption>
+        <div class="chart"><canvas id="c-weekday" role="img" aria-label="Count of deeper-discount events by weekday"></canvas></div>
+        <p class="muted small">Each event is dated by the scrape that first detected it, so the actual price change may have occurred up to 24 hours earlier.</p>
+      </figure>
+    </div>
+    <h3>Discount calendar</h3>
+    <p class="muted small">Each row represents a product and each column a day. Darker cells indicate deeper discounts. A blank cell denotes a day without a valid snapshot, which is a collection gap and not an absence of discount.</p>
+    <div class="heat-wrap" id="heatmap" tabindex="0" aria-label="Discount calendar heatmap"></div>
+    <div class="legend-ramp" aria-hidden="true"><span>0%</span><i></i><span>deepest</span></div>
+    <h3>Brand discounting style</h3>
+    <div class="table-wrap"><table id="t-brands"></table></div>
+    <h3>Recent discount changes</h3>
+    <div class="table-wrap"><table id="t-events"></table></div>
+  </section>
+
+  <section id="elasticity" class="view" hidden>
+    <h2>Demand response to discount depth</h2>
+    <div id="el-empty" class="notice" hidden></div>
+    <div id="el-body">
+      <div class="cards" id="el-cards"></div>
+      <div class="grid2">
+        <figure class="panel wide">
+          <figcaption><span class="t">Discount depth versus change in review velocity</span></figcaption>
+          <div class="chart tall"><canvas id="c-scatter" role="img" aria-label="Scatter of discount depth against change in daily review velocity, one point per discount event, with regression line and discount floor"></canvas></div>
+          <p class="muted small" id="scatter-note"></p>
+        </figure>
+        <figure class="panel">
+          <figcaption><span class="t">Median velocity lift by price band</span></figcaption>
+          <div class="chart"><canvas id="c-band" role="img" aria-label="Median review-velocity lift by price band"></canvas></div>
+        </figure>
+        <figure class="panel">
+          <figcaption><span class="t">Median velocity lift by brand tier</span></figcaption>
+          <div class="chart"><canvas id="c-tier" role="img" aria-label="Median review-velocity lift by brand tier"></canvas></div>
+        </figure>
+      </div>
+      <h3>Discounts without a corresponding demand increase</h3>
+      <p class="muted small">Events with a discount depth of at least 30% after which review velocity rose by 10% or less, or declined. The proxy is noisy, so these cases are candidates for closer review rather than proof of loss.</p>
+      <div class="table-wrap"><table id="t-erosion"></table></div>
+      <div class="notice caveat"><strong>Correlation, not causation.</strong> Seasonality, a competitor's price move or a product launch can influence both the discount and the demand change. A causal conclusion would require a randomised discount experiment.</div>
+    </div>
+  </section>
+
+  <section id="positioning" class="view" hidden>
+    <h2>Cross-platform positioning</h2>
+    <div class="grid2">
+      <figure class="panel wide">
+        <figcaption><span class="t">Value map: price versus rating</span></figcaption>
+        <div class="chart tall"><canvas id="c-value" role="img" aria-label="Scatter of average selling price against average rating per product, sized by review count"></canvas></div>
+        <p class="muted small">Bubble size represents review count and colour represents platform. Product name and brand are shown on hover.</p>
+      </figure>
+      <figure class="panel">
+        <figcaption><span class="t">Average price gap over time (platform A minus B)</span></figcaption>
+        <div class="chart"><canvas id="c-gap" role="img" aria-label="Average price gap between matched products over time"></canvas></div>
+      </figure>
+      <div class="panel" id="lag-panel"></div>
+    </div>
+    <h3>Largest unexplained price gaps</h3>
+    <p class="muted small">Matched products for which one platform is at least 3% more expensive without a meaningfully higher rating. Cross-platform pairs are matched manually through the <code>match_id</code> field in products.csv.</p>
+    <div class="table-wrap"><table id="t-gaps"></table></div>
+    <p class="notice small" id="rank-note"></p>
+  </section>
+
+  <section id="method" class="view" hidden>
+    <h2>Methodology</h2>
+    <div class="cards" id="q-cards"></div>
+    <div class="prose">
+      <h3>Data collection</h3>
+      <ul>
+        <li>A curated list of 80 product pages across Flipkart and Amazon.in is used. No crawling or search-result scraping is performed. Requests are sequential, with a randomised pause of 3 to 6 seconds per host.</li>
+        <li>The <code>robots.txt</code> file is fetched and enforced for every URL using a wildcard-aware matcher. If the file cannot be retrieved, the URL is not scraped.</li>
+        <li>The User-Agent identifies the project and includes a contact address. Login walls, CAPTCHAs and paywalls are never bypassed.</li>
+        <li>Three consecutive blocking responses (403, 429, 503 or CAPTCHA) halt collection for that platform, and the reason is logged. Blocking is respected and not circumvented.</li>
+        <li>Only public, product-level data is stored: price, MRP, rating, review count and stock status.</li>
+        <li>The scraper does not start until <code>tos_reviewed: true</code> is set in the configuration, which enforces a review of each site's Terms of Use.</li>
+      </ul>
+      <h3>Data cleaning</h3>
+      <ul>
+        <li>Rows with a null or zero price, a selling price above MRP, or an exact duplicate are removed. Discount percentage is always recomputed and never taken from the page.</li>
+        <li>Products are identified by URL rather than name. Review counts that decrease are treated as noise and carried forward.</li>
+        <li>A missing struck-through price is recorded as "not discounted" and flagged, so that a broken selector cannot appear as a genuine 0% discount.</li>
+      </ul>
+      <h3>Analysis</h3>
+      <ul>
+        <li>Events are discount changes. The first snapshot of each product is a baseline and is never counted as a change.</li>
+        <li>Seven-day before and after windows are anchored to the two snapshots that straddle each event, so the change itself does not leak into the "before" window.</li>
+        <li>Events with an internal gap of more than three days in either window are excluded, because an outage is not equivalent to an absence of reviews.</li>
+        <li>The discount floor is estimated with a hinge model and a permutation p-value, which prevents the search over thresholds from inflating significance.</li>
+        <li>Competitive response lag excludes right-censored events, meaning price cuts for which no follow-up could be observed within the horizon.</li>
+      </ul>
+      <h3>Limitations</h3>
+      <ul>
+        <li><strong>Review velocity is not sales.</strong> It measures growth in the number of ratings, which is lagged and noisy, and not every buyer leaves a rating.</li>
+        <li>The before-and-after design removes each product's baseline but does not control for seasonality or competitor activity.</li>
+        <li>A 28-day window is too short to capture a full sale-event cycle.</li>
+        <li>Cross-platform matching is manual and may mis-match bundles or regional variants.</li>
+      </ul>
+    </div>
+    <h3>Data quality log</h3>
+    <div class="table-wrap"><table id="t-quality"></table></div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span id="foot-meta" class="muted small"></span>
+  <span class="muted small">Developed by Anshika Patwari &middot; <a href="https://github.com/anshikapatwari/competitive-pricing-intelligence" id="repo-link">Source code and documentation</a></span>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
+

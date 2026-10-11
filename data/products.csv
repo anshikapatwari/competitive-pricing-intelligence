@@ -1,0 +1,81 @@
+platform,product_url,product_name,brand,match_id
+flipkart,https://www.flipkart.com/boat-airdopes-141-gen-2-4-mics-enx-tech-48h-battery-asap-charge-low-latency-bt-v5-4-bluetooth/p/itm619afae0c5b89,boAt Airdopes 141 Gen 2,boAt,M01
+amazon,https://www.amazon.in/boAt-Airdopes-141-Wireless-Resistance/dp/B09N3ZNHTY,boAt Airdopes 141,boAt,M01
+flipkart,https://www.flipkart.com/boat-rockerz-450-bluetooth-headset/p/itmece0aa0e88fe0,boAt Rockerz 450,boAt,M02
+amazon,https://www.amazon.in/Rockerz-450-Wireless-Bluetooth-Headphone/dp/B07PR1CL3S,boAt Rockerz 450,boAt,M02
+flipkart,https://www.flipkart.com/boat-550-bluetooth/p/itm9b13dbfa62a9b,boAt Rockerz 550,boAt,M03
+amazon,https://www.amazon.in/boAt-Rockerz-550-Headphone-Aesthetics/dp/B08R7L77T7,boAt Rockerz 550,boAt,M03
+flipkart,https://www.flipkart.com/sony-wh-1000xm4-bluetooth-headset/p/itm9f84f49ad6ac8,Sony WH-1000XM4,Sony,M04
+amazon,https://www.amazon.in/Sony-WH-1000XM4-Cancelling-Headphones-Bluetooth/dp/B0863TXGM3,Sony WH-1000XM4,Sony,M04
+flipkart,https://www.flipkart.com/sony-wf-c700n-lightest-tws-anc-20hr-battery-in-ear-10-min-quick-charge-multi-point-bluetooth-headset/p/itm3b43a9d746653,Sony WF-C700N,Sony,M05
+amazon,https://www.amazon.in/Sony-WF-C700N-Wireless-Cancelling-Earbuds/dp/B0BXM3ZFKC,Sony WF-C700N,Sony,M05
+flipkart,https://www.flipkart.com/sony-wf-1000xm4-bluetooth-headset/p/itmfcc8ec578429b,Sony WF-1000XM4,Sony,M06
+amazon,https://www.amazon.in/Sony-WF-1000XM4-Wireless-Cancelling-Headphones/dp/B095D1HCYG,Sony WF-1000XM4,Sony,M06
+flipkart,https://www.flipkart.com/jbl-tune-770nc-active-noise-cancelling-70hr-playtime-fast-pair-multi-connect-bluetooth-headset/p/itmb90429d083410,JBL Tune 770NC,JBL,M07
+amazon,https://www.amazon.in/JBL-Wireless-Headphones-Speedcharge-Customize/dp/B09CYX92NB,JBL Tune 770NC,JBL,M07
+flipkart,https://www.flipkart.com/jbl-tune-230nc-active-noise-cancellation-40hr-playtime-jbl-app-speed-charge-bluetooth-headset/p/itmf6e8a8d092612,JBL Tune 230NC TWS,JBL,M08
+amazon,https://www.amazon.in/JBL-Cancellation-Playtime-Adjustable-Bluetooth/dp/B09HGYSFG2,JBL Tune 230NC TWS,JBL,M08
+flipkart,https://www.flipkart.com/noise-buds-vs104-max-bluetooth/p/itmeb046aaf454e0,Noise Buds VS104 Max,Noise,M09
+amazon,https://www.amazon.in/Noise-Launched-Wireless-Playtime-Instacharge/dp/B0C7L4D51M,Noise Buds VS104 Max,Noise,M09
+flipkart,https://www.flipkart.com/realme-buds-air-5-50db-anc-12-4mm-dynamic-bass-driver-upto-38-hours-playback-bluetooth-headset/p/itm8102ba49bb015,realme Buds Air 5,realme,M10
+amazon,https://www.amazon.in/realme-Wireless-Titanized-Charging-Ultra-Low/dp/B0CLSVSJF3,realme Buds Air 5,realme,M10
+flipkart,https://www.flipkart.com/oneplus-nord-buds-2-true-wireless-earbuds-25db-active-noise-cancellation-bluetooth-headset/p/itm89489818bb3e2,OnePlus Nord Buds 2,OnePlus,M11
+amazon,https://www.amazon.in/OnePlus-Wireless-Earbuds-Titanium-Playback/dp/B0BYJ8HR19,OnePlus Nord Buds 2,OnePlus,M11
+flipkart,https://www.flipkart.com/samsung-galaxy-buds2-pro-sm-r510nzwains-bluetooth-headset/p/itm72ba67178d40c,Samsung Galaxy Buds2 Pro,Samsung,M12
+amazon,https://www.amazon.in/Samsung-Galaxy-Pro-Bluetooth-Cancellation/dp/B0B8YKBPN4,Samsung Galaxy Buds2 Pro,Samsung,M12
+flipkart,https://www.flipkart.com/noise-vs102-bluetooth-headset/p/itm5b1444b835ede,Noise Buds VS102,Noise,
+amazon,https://www.amazon.in/Noise-Wireless-Bluetooth-Playtime-Instacharge/dp/B0DS2VWDD9,Noise Buds VS102 Plus,Noise,
+flipkart,https://www.flipkart.com/jbl-tune-215tws-bluetooth-headset/p/itm3c4cd633cec63,JBL Tune 215TWS,JBL,
+flipkart,https://www.flipkart.com/sony-wf-1000xm5-best-noise-cancelling-tws-earbuds-multi-point-upto-36hrs-battery-bluetooth-headset/p/itm86886b74b3256,Sony WF-1000XM5,Sony,
+flipkart,https://www.flipkart.com/jbl-live-pro-2-active-adaptive-noise-cancellation-40hr-playtime-6-mics-deep-bass-bluetooth-headset/p/itm8e1a0d7e94fd9,JBL Live Pro 2,JBL,
+flipkart,https://www.flipkart.com/boat-airdopes-161-163-asap-charge-40-h-battery-stream-ad-free-music-via-app-support-bluetooth/p/itmee33cb4f8c0b2,boAt Airdopes 161,boAt,
+flipkart,https://www.flipkart.com/boat-airdopes-219-40h-battery-free-music-streaming-best-segment-calling-bluetooth/p/itm6492423f46c95,boAt Airdopes 219,boAt,
+flipkart,https://www.flipkart.com/boat-airdopes-supreme-w-4-mics-ai-enx-tech-50-hrs-playback-multi-point-connectivity-bluetooth/p/itm47a93966ad11e,boAt Airdopes Supreme,boAt,
+flipkart,https://www.flipkart.com/realme-buds-air-5-pro-50db-anc-360-spatial-audio-upto-40-hours-playback-bluetooth/p/itm37345859fc3d0,realme Buds Air 5 Pro,realme,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-2r-ear-earbuds-dual-mic-ai-crystal-clear-call-bluetooth/p/itm2560f6f9b1d5b,OnePlus Nord Buds 2r,OnePlus,
+flipkart,https://www.flipkart.com/oneplus-buds-pro-2r-bluetooth/p/itm8bfc7edc5cf99,OnePlus Buds Pro 2R,OnePlus,
+flipkart,https://flipkart.com/oneplus-buds-pro-3-midnight-opus-bluetooth/p/itmb3b8258254e33,OnePlus Buds Pro 3,OnePlus,
+flipkart,https://www.flipkart.com/samsung-galaxy-buds-3-bluetooth/p/itm471556688323f,Samsung Galaxy Buds 3,Samsung,
+flipkart,https://www.flipkart.com/samsung-galaxy-buds-3-pro-bluetooth/p/itm13f27472805c8,Samsung Galaxy Buds 3 Pro,Samsung,
+flipkart,https://www.flipkart.com/samsung-galaxy-buds-2-bluetooth-headset/p/itmc3c97a3bc62a8,Samsung Galaxy Buds 2,Samsung,
+flipkart,https://www.flipkart.com/skullcandy-push-active-true-wireless-earbuds-voice-control-bluetooth-headset/p/itmebc90f5bc06b5,Skullcandy Push Active,Skullcandy,
+flipkart,https://www.flipkart.com/sony-wf-c700n-gz-bluetooth-headset/p/itmb0be8b51b21d7,Sony WF-C700N Green,Sony,
+amazon,https://www.amazon.in/boAt-Airdopes-141-Bluetooth-Earphones/dp/B0DGTTP1K4,boAt Airdopes 141 Pro Buds,boAt,
+amazon,https://www.amazon.in/Sony-WF-C700N-Fully-Wireless-Earbuds/dp/B0BZGV3834,Sony WF-C700N Lavender,Sony,
+amazon,https://www.amazon.in/Sony-Cancellation-Multipoint-Connection-Support-Black/dp/B0BYPFNW6T,Sony WF-C700N Black,Sony,
+amazon,https://www.amazon.in/Noise-Bluetooth-Wireless-30-Hours-Instacharge/dp/B09Y5N4M7Z,Noise Buds VS104,Noise,
+amazon,https://www.amazon.in/Noise-Buds-VS404/dp/B0C1G3H7WK,Noise Buds VS404,Noise,M13
+amazon,https://www.amazon.in/SAMSUNG-SM-R400-Noise-Cancelling-Wireless-Bluetooth/dp/B0CL8CJPVM,Samsung Galaxy Buds FE,Samsung,
+amazon,https://www.amazon.in/boAt-Rockerz-Bluetooth-Headphones-Playback/dp/B0BR57HJSV,boAt Rockerz 450 v2,boAt,
+amazon,https://www.amazon.in/JBL-Tune-230NC-TWS-Blue/dp/B0CKSQPFSK,JBL Tune 230NC TWS Blue,JBL,
+flipkart,https://www.flipkart.com/noise-buds-vs404-50-hours-playtime-enc-quad-mic-3-eq-modes-bluetooth/p/itm281a62a0259e8,Noise Buds VS404,Noise,M13
+flipkart,https://www.flipkart.com/boat-airdopes-311-pro-w-50-hrs-playback-asap-charge-dual-mics-enx-technology-bluetooth/p/itme14141157764b,boAt Airdopes 311 Pro,boAt,M14
+amazon,https://www.amazon.in/dp/B0CZ3ZPD8B,boAt Airdopes 311 Pro,boAt,M14
+flipkart,https://www.flipkart.com/oneplus-nord-buds-bluetooth-headset/p/itmb538cc617782c,OnePlus Nord Buds,OnePlus,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-ce-truly-wireless-bluetooth-headset/p/itm0d4411f054dd0,OnePlus Nord Buds CE,OnePlus,
+flipkart,https://www.flipkart.com/oppo-enco-air-2-pro-bluetooth-headset/p/itm01e94a1c117da,OPPO Enco Air 2 Pro,OPPO,
+flipkart,https://www.flipkart.com/zebronics-zeb-duke-bluetooth/p/itm6e098395b280c,Zebronics ZEB-DUKE,Zebronics,
+flipkart,https://www.flipkart.com/zebronics-zeb-pods-141r-bluetooth/p/itm4f1f69866fa82,Zebronics Zeb Pods 141R,Zebronics,
+flipkart,https://www.flipkart.com/mivi-duopods-zig-bluetooth/p/itm9d4764228325e,Mivi DuoPods Zig,Mivi,
+flipkart,https://www.flipkart.com/mivi-duopods-f60-enc-50-hrs-playtime-made-india-powerful-bass-4-mics-bluetooth/p/itmd210e0144e03f,Mivi DuoPods F60,Mivi,
+flipkart,https://www.flipkart.com/boat-airdopes-prime-701-anc-46db-hybrid-anc-50h-battery-spatial-audio-enx-beast-mode-bluetooth/p/itm0267b5265d588,boAt Airdopes Prime 701 ANC,boAt,
+flipkart,https://www.flipkart.com/goboult-z40-pro-100hr-4-mic-enc-scratch-proof-rubber-grip-5-3v-bluetooth/p/itm5bc315d59958c,Boult Audio Z40 Pro,Boult,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-3r-tws-earbud-10min-charge-8hr-music-3d-audio-2-mic-call-bluetooth/p/itm87ffbf2a0bf08,OnePlus Nord Buds 3r,OnePlus,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-3-up-32db-anc-bluetooth/p/itm5ccf10ad44d73,OnePlus Nord Buds 3,OnePlus,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-3-pro-truly-wireless-earbuds-49db-active-noise-cancellation-bluetooth/p/itmd40bdc505265b,OnePlus Nord Buds 3 Pro,OnePlus,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-4-tws-earbuds-52db-real-time-anc-12mm-titanium-coated-drivers-bluetooth/p/itmc6c439c8d3bf7,OnePlus Nord Buds 4,OnePlus,
+flipkart,https://www.flipkart.com/oneplus-nord-buds-4-pro-tws-earbuds-upto-55db-real-time-anc-bluetooth/p/itmfb2d6b6ac46c9,OnePlus Nord Buds 4 Pro,OnePlus,
+flipkart,https://www.flipkart.com/skullcandy-indy-anc-bluetooth/p/itmab4cc36099cff,Skullcandy Indy ANC,Skullcandy,
+flipkart,https://www.flipkart.com/oppo-enco-buds-2-28-hours-battery-life-deep-noise-cancellation-bluetooth/p/itm3344fa26518ed,OPPO Enco Buds 2,OPPO,
+flipkart,https://www.flipkart.com/sony-wf-c510-earbuds-comfortable-lightweight-tws-bluetooth/p/itm1572205150bee,Sony WF-C510,Sony,
+flipkart,https://www.flipkart.com/jbl-wave-200-tws-20hr-playback-deep-bass-dual-connect-touch-controls-va-support-bluetooth/p/itm148e4d152f193,JBL Wave 200TWS,JBL,
+flipkart,https://www.flipkart.com/goboult-z40-enc-mic-60hr-battery-metal-finish-low-latency-5-3v-bluetooth/p/itm3139664c81d1a,Boult Audio Z40,Boult,
+flipkart,https://www.flipkart.com/jbl-wave-beam-2-anc-earbuds-btv5-3-multi-connect-fast-charge-40h-runtime-4-mics-bluetooth/p/itm7b31f13726189,JBL Wave Beam 2 ANC,JBL,
+flipkart,https://www.flipkart.com/jbl-tune-beam-2-tws-anc-earbuds-48hr-playtime-6-mics-dual-connect-personi-fi-3-0-bluetooth/p/itmd34a8e84776a5,JBL Tune Beam 2,JBL,
+flipkart,https://www.flipkart.com/noise-air-buds-pro-2-25-hours-playtime-40db-anc-triple-mic-enc-ipx5-bluetooth-gaming/p/itm333c3859b49a5,Noise Air Buds Pro 2,Noise,
+flipkart,https://www.flipkart.com/noise-air-buds-pro-se-anc-30db-45-hours-playtime-enc-quad-mic-bluetooth/p/itmbe92afc484505,Noise Air Buds Pro SE,Noise,
+flipkart,https://www.flipkart.com/goboult-z40-v2-0-70hrs-battery-life-quad-mic-enc-13mm-drivers-45ms-low-latency-5-4v-bluetooth/p/itm2607bf77da626,Boult Audio Z40 v2,Boult,
+flipkart,https://www.flipkart.com/noise-buds-x2-140hr-playtimeanc-32db-dual-pairingrubberised-case-finish-bluetooth/p/itmfb3864b9ab899,Noise Buds X2,Noise,
+flipkart,https://www.flipkart.com/noise-buds-connect-3-quad-mic-enc-40-hrs-playtime-bt-v5-4-ipx4-hypersync-bluetooth/p/itm66a66699426e3,Noise Buds Connect 3,Noise,
+flipkart,https://www.flipkart.com/goboult-astra-quad-mic-enc-48hrs-battery-made-india-5-3v-bluetooth/p/itma673703bd02ef,Boult Audio Astra,Boult,
+flipkart,https://www.flipkart.com/goboult-y1-pro-4-mic-enc-60hrs-battery-life-fast-charging-5-3v-bluetooth/p/itm6da06a6c2803c,Boult Audio Y1 Pro,Boult,

@@ -1,0 +1,26 @@
+# Scraper configuration. Read by scraper/run_scrape.py.
+
+# Gate: the scraper refuses to send a single request until this is true.
+# Set it ONLY after you have personally read each enabled site's Terms of Use and robots.txt.
+# robots.txt is also enforced automatically on every URL, but robots.txt is not the same
+# thing as permission under a site's Terms.
+tos_reviewed: false
+
+rate_limit:            # per host, sequential, randomised (project ground rule: 3-5 s minimum)
+  min_seconds: 3
+  max_seconds: 6
+
+platforms:
+  flipkart:
+    enabled: true
+    # CSS fallbacks, used only when the page has no schema.org JSON-LD. UNVERIFIED - inspect a
+    # live product page and update. Class names are auto-generated and rotate frequently.
+    # Candidates sourced from Flipkart page inspection (Oct 2026); verify before relying on them.
+    selectors:
+      price_selectors: ["div.Nx9bqj", "div._30jeq3", "div.CEmiEU", "div._16Jk6d"]
+      mrp_selectors:   ["div.yRaY8j", "div._3I9_wc", "div.UOCQB1", "div._2p6lqe"]
+      title_selectors: ["span.VU-ZEz", "span.B_NuCI", "h1.yhB1nd", "h1"]
+      rating_selectors: ["div.XQDdHH", "div._3LWZlK", "span._2d4LTz"]
+  amazon:
+    enabled: true
+    selectors: {}      # defaults live in scraper/amazon_scraper.py

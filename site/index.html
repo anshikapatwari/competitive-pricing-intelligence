@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Earbuds Price Watch | Amazon India Pricing Analysis</title>
+<meta name="description" content="Competitive pricing analysis of 1,351 Amazon.in listings, with a focus on headphones and earbuds: brand positioning, discount depth and the relationship between discounts and customer ratings.">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#overview"><span class="logo" aria-hidden="true">₹</span> Price Watch</a>
+    <nav aria-label="Sections" id="nav">
+      <a href="#overview">Overview</a>
+      <a href="#categories">Categories</a>
+      <a href="#brands">Headphone brands</a>
+      <a href="#demand">Discounts and ratings</a>
+      <a href="#method">Methodology</a>
+    </nav>
+    <button id="theme" class="ghost" type="button" aria-label="Toggle dark mode">◐</button>
+  </div>
+</header>
+
+<main id="main" class="wrap" tabindex="-1">
+  <p id="loading" class="muted">Loading data…</p>
+  <p id="load-error" class="notice" hidden></p>
+
+  <section id="overview">
+    <div class="hero">
+      <svg class="earbuds" viewBox="0 0 150 110" aria-hidden="true" focusable="false">
+        <g fill="none" stroke-linecap="round">
+          <g transform="rotate(-14 40 50)"><rect x="30" y="52" width="14" height="48" rx="7" fill="#ffffff"/><circle cx="37" cy="40" r="26" fill="#ff9900"/><circle cx="37" cy="40" r="11" fill="#131921"/></g>
+          <g transform="rotate(14 110 50)"><rect x="106" y="52" width="14" height="48" rx="7" fill="#ffffff"/><circle cx="113" cy="40" r="26" fill="#2874f0"/><circle cx="113" cy="40" r="11" fill="#131921"/></g>
+        </g>
+      </svg>
+      <p class="eyebrow" id="eyebrow">Amazon.in &middot; Competitive pricing analysis</p>
+      <h1>How do headphone brands compete on price and discount on Amazon India?</h1>
+      <p class="lede">An analysis of public Amazon.in listing data covering price, list price (MRP), discount depth, rating and rating count. It compares brands and categories, and tests whether deeper discounts go together with more customer ratings.</p>
+    </div>
+    <div class="cards" id="cards"></div>
+    <h2>Key findings</h2>
+    <ul id="findings" class="findings"></ul>
+    <p class="muted small">All figures are computed from a single dated snapshot. They describe associations between listings, not the effect of changing a price.</p>
+  </section>
+
+  <section id="categories">
+    <h2>Discount depth by category</h2>
+    <div class="grid2">
+      <figure class="panel wide">
+        <figcaption><span class="t">Median discount by sub-category (categories with at least 15 listings)</span></figcaption>
+        <div class="chart tall"><canvas id="c-cat" role="img" aria-label="Median discount percentage by product sub-category"></canvas></div>
+      </figure>
+      <figure class="panel wide">
+        <figcaption><span class="t">Distribution of discount depth: headphones versus other electronics</span></figcaption>
+        <div class="chart"><canvas id="c-dist" role="img" aria-label="Share of listings in each discount band for headphones and other electronics"></canvas></div>
+        <p class="muted small" id="dist-note"></p>
+      </figure>
+    </div>
+    <h3>Category detail</h3>
+    <div class="table-wrap"><table id="t-cat"></table></div>
+  </section>
+
+  <section id="brands">
+    <h2>Headphone and earbud brands</h2>
+    <p class="muted small" id="brand-note"></p>
+    <div class="grid2">
+      <figure class="panel wide">
+        <figcaption><span class="t">Value map: selling price versus rating</span></figcaption>
+        <div class="chart tall"><canvas id="c-value" role="img" aria-label="Scatter of selling price against rating for headphone listings, coloured by brand, sized by rating count"></canvas></div>
+        <p class="muted small">Bubble size represents the number of ratings. Hover for product name and discount.</p>
+      </figure>
+      <figure class="panel">
+        <figcaption><span class="t">Median selling price and list price by brand</span></figcaption>
+        <div class="chart"><canvas id="c-brand-price" role="img" aria-label="Median selling price and MRP by brand"></canvas></div>
+      </figure>
+      <figure class="panel">
+        <figcaption><span class="t">Median discount by brand</span></figcaption>
+        <div class="chart"><canvas id="c-brand-disc" role="img" aria-label="Median discount percentage by brand"></canvas></div>
+      </figure>
+    </div>
+    <h3>Brand comparison</h3>
+    <div class="table-wrap"><table id="t-brands"></table></div>
+    <h3>By price band</h3>
+    <div class="table-wrap"><table id="t-bands"></table></div>
+  </section>
+
+  <section id="demand">
+    <h2>Do deeper discounts go with more ratings?</h2>
+    <div class="grid2">
+      <figure class="panel wide">
+        <figcaption><span class="t">Rank correlation between discount depth and rating count, within each sub-category</span></figcaption>
+        <div class="chart"><canvas id="c-within" role="img" aria-label="Spearman correlation between discount and rating count by sub-category with confidence intervals"></canvas></div>
+        <p class="muted small">Points show Spearman's rho; bars show the 95% bootstrap interval. Only sub-categories with at least 40 listings are included.</p>
+      </figure>
+    </div>
+    <div class="notice caveat"><strong>Association, not causation.</strong> This dataset is one snapshot with no time dimension, so it cannot show whether a price cut changed demand. A negative correlation is consistent with retailers discounting less popular items; it does not show that discounting reduces ratings.</div>
+    <h3>Summary of associations</h3>
+    <div class="table-wrap"><table id="t-assoc"></table></div>
+  </section>
+
+  <section id="method">
+    <h2>Methodology</h2>
+    <div class="cards" id="q-cards"></div>
+    <div class="prose">
+      <h3>Data</h3>
+      <ul>
+        <li>Source: the public "Amazon Sales Dataset" on Kaggle, listing products from Amazon.in. Rows are one product each, with price, list price, discount, rating, rating count and category path.</li>
+        <li>The snapshot date is derived from the timestamp embedded in the product links and is shown in the overview. The data has no history, so no trends over time are claimed.</li>
+      </ul>
+      <h3>Cleaning</h3>
+      <ul>
+        <li>Currency symbols and thousands separators are removed from prices and rating counts, and discount percentages are parsed from text.</li>
+        <li>Repeated product identifiers are collapsed to one row per product so that a listing is not counted twice.</li>
+        <li>The stated discount is checked against the discount recomputed from price and list price. Rows with unparseable values are excluded from the affected statistic only.</li>
+      </ul>
+      <h3>Analysis</h3>
+      <ul>
+        <li>Medians are used throughout because price and rating-count distributions are heavily skewed.</li>
+        <li>Brand is taken from the first word of the product title and normalised for spelling. Brands with fewer than three headphone listings are grouped as "Other brands".</li>
+        <li>Associations use Spearman rank correlation, with 95% intervals from a bootstrap of 2,000 resamples. Rating count is log-transformed before correlation.</li>
+        <li>Correlations are also computed within sub-categories to avoid mixing categories that differ in both discount level and popularity.</li>
+      </ul>
+      <h3>Limitations</h3>
+      <ul>
+        <li><strong>Small headphone sample.</strong> There are only 63 unique headphone and accessory listings, so brand-level figures rest on a handful of products each.</li>
+        <li><strong>Accessories included.</strong> The headphone sub-category also contains adapters, cases and ear pads, not only earphones.</li>
+        <li><strong>Single platform, single date.</strong> There is no cross-platform comparison and no time series in this dataset.</li>
+        <li><strong>List price is seller-reported.</strong> A high discount may reflect an inflated MRP rather than a real saving.</li>
+        <li><strong>Rating count is not sales.</strong> It reflects cumulative reviews over a product's lifetime.</li>
+      </ul>
+      <h3>Tooling</h3>
+      <ul>
+        <li>Cleaning, analysis and chart data are produced by a Python script in the project repository, and the page is generated from its JSON output. The repository also contains a scraper for collecting live prices, which was not used for any figure on this page.</li>
+      </ul>
+    </div>
+    <h3>Data quality log</h3>
+    <div class="table-wrap"><table id="t-quality"></table></div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span id="foot-meta" class="muted small"></span>
+  <span class="muted small">Developed by Anshika Patwari &middot; <a href="https://github.com/anshikapatwari/competitive-pricing-intelligence" id="repo-link">Source code and documentation</a></span>
+</footer>
+<script src="analysis.js"></script>
+</body>
+</html>
