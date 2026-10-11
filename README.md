@@ -6,7 +6,9 @@ An analysis of 1,351 Amazon.in listings, with a focus on headphones and earbuds.
 2. How do brands position themselves on price, discount and customer rating?
 3. Do more heavily discounted listings have more customer ratings?
 
-The results are published as a static dashboard in `site/` (GitHub Pages).
+**Live dashboard:** https://amazon-pricing-analysis.netlify.app/
+
+The results are published as a static dashboard in `site/`.
 
 ## Data
 
@@ -56,7 +58,7 @@ cd site && python -m http.server 8000      # open http://localhost:8000
 
 ## Deploy
 
-Push to GitHub, then Settings, Pages, Source: **GitHub Actions**. The `deploy-site` workflow publishes the `site/` folder on every push to `main`.
+The live site is hosted on Netlify (publish directory `site`, no build command), connected to this repository so every push to `main` redeploys. As an alternative, Settings, Pages, Source: **GitHub Actions** enables the `deploy-site` workflow, which also publishes the `site/` folder.
 
 ## Repository layout
 
